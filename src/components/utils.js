@@ -1,3 +1,8 @@
+const createElement = (template) => {
+  const newElement = document.createElement(`div`);
+  newElement.insertAdjacentHTML(`beforeend`, template);
+  return newElement.firstChild;
+};
 
 const render = ((container, el, position) => {
   const containerHTML = document.querySelector(container);
@@ -26,4 +31,4 @@ const sendRequest = (url, callback) => {
     .catch((err) => console.error(err));
 };
 
-export {sendRequest, render};
+export {sendRequest, render, createElement};

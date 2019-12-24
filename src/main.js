@@ -1,4 +1,4 @@
-import {sendRequest, render} from './utils';
+import {sendRequest, render} from './components/utils';
 import {Card} from './components/card';
 
 const url = `http://134.209.138.34/`;
@@ -10,14 +10,19 @@ const renderCard = ((data) => {
 
   link.addEventListener(`click`, (e) => {
     e.preventDefault();
+    window.location.href = `detail.html${`?=`+card._id}`;
   });
 
-  render(`.card-list`, card.getElement(), `AFTERBEGIN`);
-
+  //render(`.card-list`, card.getElement(), `AFTERBEGIN`);
+  return card.getElement();
 });
 
 sendRequest(urlItemList, (data) => {
+  let dFragment = document.createDocumentFragment();
+
   data.map((cardData) => {
-    renderCard(cardData);
+    dFragment.appendChild(renderCard(cardData));
   });
+
+  document.querySelector(`.card-list`).append(dFragment);
 });

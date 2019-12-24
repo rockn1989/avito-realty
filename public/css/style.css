@@ -8,6 +8,7 @@
 html, body {
   font-size: 16px;
   line-height: 18px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 #app {
@@ -24,9 +25,8 @@ html, body {
 }
 
 .card-list li {
-  margin-left: 20px;
   margin-bottom: 20px;
-  flex-basis: calc((100% - 60px) / 1);
+  flex-basis: 100%;
 }
 
 .card {
@@ -58,21 +58,26 @@ html, body {
 
 .card__img {
   margin-bottom: 10px;
+  text-align: center;
   height: 190px;
 }
 
 .card__address {
-  margin-bottom: 10px;
-  font-size: 18px;
-  line-height: 20px;
+  margin-bottom: 5px;
+  max-height: 35px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #525151;
+  overflow: hidden;
 }
 
 .card__price {
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .card__price .current-price {
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -84,7 +89,8 @@ html, body {
 
 @media (min-width: 640px) {
   .card-list li {
-    flex-basis: calc((100% - 60px) / 2);
+    margin-left: 20px;
+    flex-basis: calc((100% - 40px) / 2);
   }
 }
 

@@ -1,10 +1,5 @@
 
-const createElement = (template) => {
-  const newElement = document.createElement(`div`);
-  newElement.insertAdjacentHTML(`beforeend`, template);
-  return newElement.firstChild;
-};
-
+import {createElement} from './utils';
 
 class Card {
   constructor({id, address, title, previewImage, price}) {
