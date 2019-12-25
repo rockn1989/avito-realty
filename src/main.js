@@ -1,28 +1,34 @@
 import {sendRequest, render} from './components/utils';
 import {Card} from './components/card';
+import {CardDetail} from './detail';
 
-const url = `http://134.209.138.34/`;
-const urlItemList = url+`items`;
+const urlRequest = `http://134.209.138.34/`;
+const urlRequestItemList = urlRequest + `items/`;
 
-const renderCard = ((data) => {
-  const card = new Card(data);
-  const link = card.getElement().querySelector(`a`);
+const cardList = document.querySelector(`.card-list`);
 
-  link.addEventListener(`click`, (e) => {
-    e.preventDefault();
-    window.location.href = `detail.html${`?=`+card._id}`;
+const cardDetail = document.querySelector(`#card`);
+
+if (cardList) {
+  sendRequest(urlRequestItemList, (data) => {
+    let dFragment = document.createDocumentFragment();
+
+    data.map((cardData) => {
+      dFragment.appendChild(new Card(cardData).getElement());
+    });
+
+    cardList.append(dFragment);
   });
+}
 
-  //render(`.card-list`, card.getElement(), `AFTERBEGIN`);
-  return card.getElement();
-});
-
-sendRequest(urlItemList, (data) => {
-  let dFragment = document.createDocumentFragment();
-
-  data.map((cardData) => {
-    dFragment.appendChild(renderCard(cardData));
-  });
-
-  document.querySelector(`.card-list`).append(dFragment);
-});
+if (cardDetail) {
+  const url = window.location.href;
+  const separate = url.indexOf('?');
+  const id = url.slice(separate+1)
+  const urlItem = urlRequest + `item/` + id;
+  sendRequest(urlItem, (data) => {
+    console.log(...data)
+    render(`#card`, new CardDetail(...data).getElement(), `AFTERBEGIN`);
+  })
+}
+//render(`#card`, new CardDetail())

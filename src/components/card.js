@@ -8,6 +8,15 @@ class Card {
     this._title = title;
     this._previewImage = previewImage;
     this._price = price;
+    this._link = this.getElement().querySelector(`a`);
+    this.init();
+  }
+
+  pageMoving() {
+    this._link.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      window.location.href = `detail.html${`?` + this._id}`;
+    });
   }
 
   getElement() {
@@ -29,6 +38,10 @@ class Card {
     </a>
   </div></li>
     `;
+  }
+
+  init() {
+    this.pageMoving();
   }
 }
 
