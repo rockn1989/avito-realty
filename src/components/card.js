@@ -12,7 +12,7 @@ class Card {
     this.init();
   }
 
-  pageMoving() {
+  eventsHandler() {
     this._link.addEventListener(`click`, (e) => {
       e.preventDefault();
       window.location.href = `detail.html${`?` + this._id}`;
@@ -41,7 +41,7 @@ class Card {
   }
 
   init() {
-    this.pageMoving();
+    this.eventsHandler();
   }
 }
 

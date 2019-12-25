@@ -22,13 +22,10 @@ if (cardList) {
 }
 
 if (cardDetail) {
-  const url = window.location.href;
-  const separate = url.indexOf('?');
-  const id = url.slice(separate+1)
+  const id = window.location.search.replace(`?`, ``);
   const urlItem = urlRequest + `item/` + id;
   sendRequest(urlItem, (data) => {
-    console.log(...data)
+    console.log(...data);
     render(`#card`, new CardDetail(...data).getElement(), `AFTERBEGIN`);
-  })
+  });
 }
-//render(`#card`, new CardDetail())

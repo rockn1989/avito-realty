@@ -21,7 +21,7 @@ const sendRequest = (url, callback) => {
     .then((response) => {
       if (response.ok) {
         return response.json();
-      };
+      }
 
       throw new Error(`Неизвестный статус: ${response.status} ${response.statusText}`);
     })
