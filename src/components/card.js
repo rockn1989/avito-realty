@@ -8,11 +8,10 @@ class Card {
     this._title = title;
     this._previewImage = previewImage;
     this._price = price;
-    this._link = this.getElement().querySelector(`a`);
-    this.init();
   }
-
+  
   eventsHandler() {
+    this._link = this.getElement().querySelector(`a`);
     this._link.addEventListener(`click`, (e) => {
       e.preventDefault();
       window.location.href = `detail.html${`?` + this._id}`;
@@ -22,7 +21,9 @@ class Card {
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
+      this.eventsHandler();
     }
+    
     return this._element;
   }
 
@@ -38,10 +39,6 @@ class Card {
     </a>
   </div></li>
     `;
-  }
-
-  init() {
-    this.eventsHandler();
   }
 }
 

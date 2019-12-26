@@ -1,6 +1,6 @@
 import {sendRequest, render} from './components/utils';
 import {Card} from './components/card';
-import {CardDetail} from './detail';
+import {CardDetail} from './components/detail';
 
 const urlRequest = `http://134.209.138.34/`;
 const urlRequestItemList = urlRequest + `items/`;
@@ -25,7 +25,6 @@ if (cardDetail) {
   const id = window.location.search.replace(`?`, ``);
   const urlItem = urlRequest + `item/` + id;
   sendRequest(urlItem, (data) => {
-    console.log(...data);
     render(`#card`, new CardDetail(...data).getElement(), `AFTERBEGIN`);
   });
 }
