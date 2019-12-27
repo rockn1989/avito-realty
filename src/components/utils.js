@@ -31,4 +31,29 @@ const sendRequest = (url, callback) => {
     .catch((err) => console.error(err));
 };
 
-export {sendRequest, render, createElement};
+const createSmallImages = (images) => {
+  const imagesList = [...images];
+  const newImagesList = [];
+  
+
+  const canvas = document.createElement(`canvas`);
+  canvas.width = `100`;
+  canvas.height = `100`;
+  const ctx = canvas.getContext(`2d`);
+  
+  imagesList.map((imgSrc) => {
+    const newImg = new Image();
+    newImg.src = imgSrc;
+    newImg.onload = () => {
+      ctx.drawImage(newImg, 0, 0, 100, 100);
+    };  
+    newImg.src = canvas.toDataURL("image/png");
+    newImagesList.push(newImg); 
+  });
+  console.log(newImagesList)
+  
+  return newImagesList;
+
+};
+
+export {sendRequest, render, createElement, createSmallImages};
