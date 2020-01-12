@@ -1,6 +1,6 @@
-import {Card} from './card';
+import Card from './card';
 
-class CardDetail extends Card{
+export default class CardDetail extends Card {
   constructor(data) {
     super(data);
     this._description = data.description;
@@ -21,7 +21,7 @@ class CardDetail extends Card{
     <div class="card-detail__sliders-wrapper">
       <div class="main-slider">
         ${this._images.map((img) => {
-          return `<div class="slide"><img src="${img}" /></div>`
+          return `<div class="slide"><img src="${img}" /></div>`;
         }).join(``)}
       </div>
       <div class="preview-slider"></div>
@@ -33,6 +33,5 @@ class CardDetail extends Card{
   </div>
     `;
   }
-}
 
-export {CardDetail};
+}

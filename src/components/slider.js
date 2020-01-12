@@ -13,7 +13,7 @@ class Slider {
   }
 
   getTemplate() {
-    return `<div class="main-slider"></div>`
+    return `<div class="main-slider"></div>`;
   }
 
 }

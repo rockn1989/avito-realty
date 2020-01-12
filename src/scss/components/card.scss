@@ -1,0 +1,57 @@
+/*______ Start Card ______*/
+
+.card {
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    height: 100%;
+    &__title {
+        margin-bottom: 10px;
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: bold;
+    }
+
+    &__img {
+        margin-bottom: 10px;
+        text-align: center;
+        height: 190px;
+        img {
+            max-height: 100%;
+        }
+    }
+
+    &__address {
+        margin-bottom: 5px;
+        max-height: 35px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #525151;
+        overflow: hidden;
+    }
+
+    &__price {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    &__price {
+        .current-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    }
+    a {
+        display: block;
+        color: #000000;
+        text-decoration: none;
+    }
+    span {
+        display: block;
+        &.current-price {
+            display: inline;
+        }
+    }
+}
+
+/*______ End Card ______*/

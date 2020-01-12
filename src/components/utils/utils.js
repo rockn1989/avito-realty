@@ -4,18 +4,6 @@ const createElement = (template) => {
   return newElement.firstChild;
 };
 
-const render = ((container, el, position) => {
-  const containerHTML = document.querySelector(container);
-  switch(position) {
-    case `AFTERBEGIN` :
-      containerHTML.prepend(el);
-      break;
-    case `BEFOREEND` :
-      containerHTML.append(el);
-      break;
-  }
-});
-
 const sendRequest = (url, callback) => {
   fetch(url)
     .then((response) => {
@@ -31,4 +19,4 @@ const sendRequest = (url, callback) => {
     .catch((err) => console.error(err));
 };
 
-export {sendRequest, render, createElement};
+export {sendRequest, createElement};

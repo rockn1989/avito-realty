@@ -1,30 +1,15 @@
-import {sendRequest, render} from './components/utils';
-import {Card} from './components/card';
-import {CardDetail} from './components/detail';
+import "./scss/base.scss";
+import CardRender from './components/card-render';
 
-const urlRequest = `http://134.209.138.34/`;
-const urlRequestItemList = urlRequest + `items/`;
+const Card = new CardRender();
 
-const cardList = document.querySelector(`.card-list`);
+Card.init();
 
-const cardDetail = document.querySelector(`#card`);
+/*
 
-if (cardList) {
-  sendRequest(urlRequestItemList, (data) => {
-    let dFragment = document.createDocumentFragment();
+https://tproger.ru/translations/configure-webpack4/
+https://webpack.js.org/plugins/html-webpack-plugin/
+https://webpack.js.org/loaders/
+https://webpack.js.org/plugins/
 
-    data.map((cardData) => {
-      dFragment.appendChild(new Card(cardData).getElement());
-    });
-
-    cardList.append(dFragment);
-  });
-}
-
-if (cardDetail) {
-  const id = window.location.search.replace(`?`, ``);
-  const urlItem = urlRequest + `item/` + id;
-  sendRequest(urlItem, (data) => {
-    render(`#card`, new CardDetail(...data).getElement(), `AFTERBEGIN`);
-  });
-}
+*/
