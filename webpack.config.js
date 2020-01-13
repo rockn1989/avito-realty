@@ -23,8 +23,17 @@ module.exports = {
           fallback: `style-loader`,
           use: [`css-loader`, `sass-loader`]
         })
+      }, {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: `babel-loader`,
+          options: {
+            presets: [`@babel/preset-env`]
+          }
+        }
       }
     ]
   },
-  plugins: [new ExtractTextPlugin({filename: `css/style.css`})]
+  plugins: [new ExtractTextPlugin({ filename: `css/style.css` })]
 };
