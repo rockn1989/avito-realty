@@ -20,17 +20,12 @@ export default class CardDetail extends Card {
     </div>
     <div class="card-detail__sliders-wrapper">
       <div class="main-slider">
-        
         ${this._images.map((img) => {
           
           return `<div class="slide"><img src="${img}" /></div>`
         }).join(``)}
       </div>
-      <div class="preview-slider">
-        ${this._images.map((img, i) => {
-          return `<div>${createSmallImages(this._images)[i]}</div>`
-        }).join(``)}
-      </div>
+      <div class="preview-slider"></div>
     </div>
     <div class="card-detail__bottom">
       <div class="card-detail__author">${this._sellerName}</div>

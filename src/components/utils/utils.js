@@ -44,4 +44,4 @@ const createSmallImages = (images) => {
 
 };
 
-export {sendRequest, render, createElement, createSmallImages};
+export {sendRequest, createElement};
