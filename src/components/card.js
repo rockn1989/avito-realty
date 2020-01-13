@@ -1,7 +1,6 @@
+import {createElement} from './utils/utils';
 
-import {createElement} from './utils';
-
-class Card {
+export default class Card {
   constructor({id, address, title, previewImage, price}) {
     this._id = id;
     this._address = address;
@@ -41,5 +40,3 @@ class Card {
     `;
   }
 }
-
-export {Card};

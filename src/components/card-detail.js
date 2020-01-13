@@ -1,6 +1,6 @@
-import {Card} from './card';
-import { createSmallImages } from './utils';
-class CardDetail extends Card{
+import Card from './card';
+
+export default class CardDetail extends Card {
   constructor(data) {
     super(data);
     this._description = data.description;
@@ -39,6 +39,5 @@ class CardDetail extends Card{
   </div>
     `;
   }
-}
 
-export {CardDetail};
+}

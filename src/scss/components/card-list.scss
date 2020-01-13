@@ -1,0 +1,18 @@
+/*______ Start Card List ______*/
+
+.card-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: -20px;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-bottom: 20px;
+    flex-basis: 100%;
+  }
+}
+
+
+
+/*______ End Card List ______*/
