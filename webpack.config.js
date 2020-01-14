@@ -1,12 +1,21 @@
-const path = require(`path`);
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist')
+}
 
 module.exports = {
   mode: `development`,
-  entry: `./src/main.js`,
+  entry: {
+    app: PATHS.src
+  },
   output: {
-    path: path.resolve(__dirname, `public/js/`),
-    filename: `bundle.js`
+    path: PATHS.dist,
+    filename: `[name].[hash].js`,
+    publicPath: `/`
   },
   devtool: `source-maps`,
   devServer: {
@@ -19,11 +28,12 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: ExtractTextPlugin.extract({
-          fallback: `style-loader`,
-          use: [`css-loader`, `sass-loader`]
-        })
-      }, {
+        use: [{
+          loader: MiniCssExtractPlugin.loader
+        },
+        `css-loader`,
+        `sass-loader`
+      ]}, {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: {
@@ -35,5 +45,19 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin({ filename: `css/style.css` })]
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `[name].[hash].css` 
+    }),
+    new HtmlWebpackPlugin({
+      template: `${PATHS.src}/index.html`,
+      filename: './index.html',
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      template: `${PATHS.src}/detail.html`,
+      filename: './detail.html',
+      inject: false
+    })
+  ]
 };

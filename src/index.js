@@ -4,7 +4,6 @@ import CardRender from './components/card-render';
 const Card = new CardRender();
 
 Card.init();
-
 /*
 
 https://tproger.ru/translations/configure-webpack4/
