@@ -38,6 +38,7 @@ export default class CardList {
         if (this._cardDetail) {
             sendRequest(Request.sendRequest(`detail`, this._getHash()), (data) => {
                 this._renderCard(data);
+                console.log('123');
             });
         }
     }
