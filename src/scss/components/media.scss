@@ -2,6 +2,9 @@
   .card-list {
     margin-left: 0;
   }
+  .card-detail__images-wrapper {
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 640px) {
@@ -9,10 +12,16 @@
     margin-left: 20px;
     flex-basis: calc((100% - 40px) / 2);
   }
+  .card-detail__images-wrapper {
+    max-width: 80%;
+  }
 }
 
 @media (min-width: 960px) {
   .card-list li {
     flex-basis: calc((100% - 60px) / 3);
+  }
+  .card-detail__images-wrapper {
+    max-width: 60%;
   }
 }

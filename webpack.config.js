@@ -17,7 +17,7 @@ module.exports = {
     filename: `[name].[hash].js`,
     publicPath: `/`
   },
-  devtool: `source-maps`,
+  devtool: `source-map`,
   devServer: {
     contentBase: path.join(__dirname, `public`),
     publicPath: "http://localhost:8080",
@@ -28,12 +28,15 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [{
-          loader: MiniCssExtractPlugin.loader
-        },
-        `css-loader`,
-        `sass-loader`
-      ]}, {
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          `css-loader`,
+          `sass-loader`
+        ]
+      },
+      {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: {
@@ -47,16 +50,16 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `[name].[hash].css` 
+      filename: `[name].[hash].css`
     }),
     new HtmlWebpackPlugin({
-      template: `${PATHS.src}/index.html`,
-      filename: './index.html',
+      template: `${PATHS.src}/html/views/index.html`,
+      filename: "./index.html",
       inject: false
     }),
     new HtmlWebpackPlugin({
-      template: `${PATHS.src}/detail.html`,
-      filename: './detail.html',
+      template: `${PATHS.src}/html/views/detail.html`,
+      filename: "./detail.html",
       inject: false
     })
   ]

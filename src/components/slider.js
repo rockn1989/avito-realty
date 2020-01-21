@@ -1,7 +1,10 @@
 
-class Slider {
+import {createElement} from "./utils/utils";
+
+export default class Slider {
   constructor(images = []) {
     this._images = images;
+    console.log(this._images);
   }
 
   getElement() {
@@ -13,7 +16,19 @@ class Slider {
   }
 
   getTemplate() {
-    return `<div class="main-slider"></div>`;
+		return `<div class="big-images">
+		<div class="image">
+			<img src="${this._images[0]}" />
+		</div>
+		</div><div class="small-images-wrapper">
+			<div class="small-images">
+			${this._images
+				.map(img => {
+					return `<div class="preview"><img src="${img}" /></div>`;
+				})
+				.join(``)}
+			</div>
+		</div>`;
   }
 
 }

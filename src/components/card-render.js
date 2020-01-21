@@ -21,7 +21,9 @@ export default class CardList {
     }
 
     _renderCard(data) {
-        this._cardDetail.append(new CardDetail(...data).getElement());
+        const card = new CardDetail(...data);
+        this._cardDetail.append(card.getElement());
+        card._initSlider()
     }
 
     _getHash() {
@@ -38,7 +40,6 @@ export default class CardList {
         if (this._cardDetail) {
             sendRequest(Request.sendRequest(`detail`, this._getHash()), (data) => {
                 this._renderCard(data);
-                console.log('123');
             });
         }
     }
