@@ -5,6 +5,11 @@
   .slider-wrapper {
     max-width: 100%;
   }
+  .big-images {
+    .image {
+      height: 200px;
+    }
+  }
 }
 
 @media (min-width: 640px) {
