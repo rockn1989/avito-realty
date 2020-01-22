@@ -1,46 +1,31 @@
-import {sendRequest} from './utils/utils';
+import {sendRequest, getHash} from './utils/utils';
 import RequestUrl from './utils/request';
-import Card from './card';
 import CardDetail from './card-detail';
+import Slider from './slider';
 
 const Request = new RequestUrl();
 
-export default class CardList {
-    constructor() {
-        this._cardList = document.querySelector(`.card-list`);
-        this._cardDetail = document.querySelector(`#card`);
-    }
+export default class RenderCardList {
+  constructor() {
+    this._container = document.querySelector(`#card`);
+  }
 
-    _renderCards(data) {
-        let dFragment = document.createDocumentFragment();
-        data.map((cardData) => {
-            dFragment.appendChild(new Card(cardData).getElement());
-        });
+  _render(data) {
+    const card = new CardDetail(...data);
+    const slider = new Slider(...data);
+    const slideContainer = card.getElement().querySelector(`.slider-wrapper`);
 
-        this._cardList.append(dFragment);  
-    }
+    this._container.append(card.getElement());
+    slideContainer.append(slider.getElement());
+    slider.init();
+  }
+  
 
-    _renderCard(data) {
-        const card = new CardDetail(...data);
-        this._cardDetail.append(card.getElement());
-        card._initSlider()
-    }
-
-    _getHash() {
-        const id = window.location.search.replace(`?`, ``);
-        return id;
-    }
-
-    init() {
-        if (this._cardList) {
-            sendRequest(Request.sendRequest(`list`), (data) => {
-                this._renderCards(data);
-            });
-        }
-        if (this._cardDetail) {
-            sendRequest(Request.sendRequest(`detail`, this._getHash()), (data) => {
-                this._renderCard(data);
-            });
-        }
-    }
+  init() {
+    if (this._container) {
+      sendRequest(Request.sendRequest(`detail`, getHash()), (data) => {
+        this._render(data);
+      });
+    } 
+  }
 }

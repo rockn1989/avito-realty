@@ -1,9 +1,14 @@
 import "./scss/base.scss";
-import CardRender from './components/card-render';
 
-const Card = new CardRender();
+import CardList from './components/cards-render';
+import CardDetail from './components/card-render';
 
-Card.init();
+const cardList = new CardList();
+const cardDetail = new CardDetail();
+
+cardList.init();
+cardDetail.init();
+
 /*
 
 https://tproger.ru/translations/configure-webpack4/
