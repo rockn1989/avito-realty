@@ -29,8 +29,4 @@ export default class CardDetail extends Card {
     `;
   }
 
-  init() {
-    console.log(12312)
-  }
-
 }

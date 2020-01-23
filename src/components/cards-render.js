@@ -1,8 +1,6 @@
-import {sendRequest} from './utils/utils';
-import RequestUrl from './utils/request';
+import {requestUrl, API_URL} from './utils/utils';
 import Card from './card';
 
-const Request = new RequestUrl();
 
 export default class RenderCardList {
     constructor() {
@@ -21,8 +19,9 @@ export default class RenderCardList {
 
     init() {
         if (this._cardList) {
-            sendRequest(Request.sendRequest(`list`), (data) => {
-                this._render(data);
+            requestUrl(API_URL.apiUrlList)
+            .then((result) => {
+                this._render(result)
             });
         }
     }

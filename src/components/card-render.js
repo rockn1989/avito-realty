@@ -1,9 +1,7 @@
-import {sendRequest, getHash} from './utils/utils';
-import RequestUrl from './utils/request';
+import {requestUrl, API_URL, getHash} from './utils/utils';
 import CardDetail from './card-detail';
 import Slider from './slider';
 
-const Request = new RequestUrl();
 
 export default class RenderCardList {
   constructor() {
@@ -23,9 +21,10 @@ export default class RenderCardList {
 
   init() {
     if (this._container) {
-      sendRequest(Request.sendRequest(`detail`, getHash()), (data) => {
-        this._render(data);
-      });
+      requestUrl(API_URL.apiUrlDetail + getHash())
+        .then((result) => {
+          this._render(result)
+        });
     } 
   }
 }
