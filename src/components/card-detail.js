@@ -10,12 +10,17 @@ export default class CardDetail extends Card {
 
 
   eventsHandler() {
-    return false;
+    const btnBack = this.getElement().querySelector(`.back`);
+
+    btnBack.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      window.history.back();
+    });
   }
   
   getTemplate() {
     return `<div class="card-detail">
-    <a href="/" class="back">Вернуться назад</a>
+    <a href="#" class="back">Вернуться назад</a>
     <div class="card-detail__top">
       <h1 class="card-detail__title">${this._title}</h1>
       <div class="card-detail__price">${this._price}</div>

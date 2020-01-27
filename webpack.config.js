@@ -1,21 +1,20 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
-  src: path.join(__dirname, './src'),
-  dist: path.join(__dirname, './dist')
+  src: path.join(__dirname, 'src'),
+  dist: path.join(__dirname, 'dist')
 };
 
 module.exports = {
-  mode: `development`,
   entry: {
     app: PATHS.src
   },
   output: {
     path: PATHS.dist,
-    filename: `[name].[hash].js`,
-    publicPath: `/`
+    filename: `js/[name].[hash].js`
   },
   devtool: `source-map`,
   devServer: {
@@ -50,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `[name].[hash].css`
+      filename: `css/[name].[hash].css`
     }),
     new HtmlWebpackPlugin({
       template: `${PATHS.src}/html/views/index.html`,
@@ -61,6 +60,10 @@ module.exports = {
       template: `${PATHS.src}/html/views/detail.html`,
       filename: "./detail.html",
       inject: false
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: `${PATHS.src}/html/view/*.html`, to: `${PATHS.dist}`},
+      { from: `${PATHS.src}/css/`, to: `${PATHS.dist}/css`}
+    ])
   ]
 };
