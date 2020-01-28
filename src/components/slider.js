@@ -6,18 +6,19 @@ export default class Slider {
     this._images = images;
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
+	getElement() {
+		if (!this._element) {
+			this._element = createElement(this.getTemplate());
+		}
 
-    return this._element;
-  }
+		return this._element;
+	}
 
 	_setHandlerSlides() {
 		const bigImage = this.getElement().querySelector(`.big-images .image img`);
 		const smallImages = this.getElement().querySelector(`.small-images`);
 		const previewList = this.getElement().querySelectorAll(`.small-images .preview`);
+		
 		smallImages.addEventListener(`click`, (evt) => {
 			if(evt.target.tagName === `IMG`) {
 				const img = evt.target;
@@ -31,7 +32,7 @@ export default class Slider {
 		});
 	}
 
-  getTemplate() {
+	getTemplate() {
 		return `<div class="slider"><div class="big-images">
 			<div class="image"><img src="${this._images[0]}" /></div>
 		</div>
@@ -48,7 +49,7 @@ export default class Slider {
 			</div>
 		</div>
 		`;
-  }
+	}
 
 	init() {
 		this._setHandlerSlides();

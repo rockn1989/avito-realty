@@ -23,7 +23,7 @@ export default class RenderCardList {
     if (this._container) {
       requestUrl(API_URL.apiUrlDetail + getHash())
         .then((result) => {
-          this._render(result)
+          this._render(result);
         });
     } 
   }

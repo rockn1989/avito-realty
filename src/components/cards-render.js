@@ -21,7 +21,7 @@ export default class RenderCardList {
         if (this._cardList) {
             requestUrl(API_URL.apiUrlList)
             .then((result) => {
-                this._render(result)
+                this._render(result);
             });
         }
     }
